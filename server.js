@@ -6,7 +6,17 @@ const postRoute = require('./routes/post');
 const uploadRoute = require('./routes/upload');
 const mongoose = require("mongoose");
 const path = require("path");
+const cors = require("cors")
 require('dotenv').config();
+
+//cors
+app.use(
+    cors({
+        origin:"https://main--graceful-shortbread-a3ddd5.netlify.app/",
+        methods: ["GET", "POST","DELETE","PUT"],
+        credentials:true,
+    })
+);
 
 // Database Connect
 mongoose.connect(process.env.MONGOURL).then(()=>{
